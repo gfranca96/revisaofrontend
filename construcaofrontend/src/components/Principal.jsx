@@ -1,18 +1,16 @@
+import Home from "../pages/Home";
+import Novo from "../pages/Novo";
+import Pedidos from "../pages/Pedidos";
+import Sobre from "../pages/Sobre";
+
+
 export default function Principal() {
     return (
         <main>
-            <section>
-                <h2>Pagina Inicial</h2>
-            </section>
-            <section>
-                <h2>Meus Pedidos</h2>
-            </section>
-            <section>
-                <h2>Novo Pedidos</h2>
-            </section>
-            <section>
-                <h2>Pagina Sobre</h2>
-            </section>
+            <Home />
+            <Pedidos />
+            <Novo />
+            <Sobre />
         </main>
     )
 }
