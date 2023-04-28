@@ -1,7 +1,7 @@
-export default function Footer() {
+export default function Footer () {
     return (
         <footer>
-            <p>Direitos Autorais 2023</p>
-        </footer>
+        <p>Direitos Autorais 2023</p>
+      </footer>
     )
 }

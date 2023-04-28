@@ -1,9 +1,9 @@
 import Section from "../components/Section"
 
-export default function Home() {
+export default function Erro404() {
     return (
         <Section Titulo="Página Inicial">
-            <p>Conteudo da página inicial</p>
+            <p>Pagina não encontrada </p>
         </Section>
     )
 }

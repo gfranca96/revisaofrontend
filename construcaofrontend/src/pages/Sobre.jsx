@@ -1,9 +1,9 @@
-import Section from "../components/Section";
+import Section from "../components/Section"
 
 export default function Sobre() {
     return (
-        <Section titulo="Sobre">
-            <p>Conteúdo da página sobre</p>
+        <Section Titulo="Página Sobre">
+            <p>Conteudo da página Sobre</p>
         </Section>
     )
 }

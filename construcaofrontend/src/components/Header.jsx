@@ -1,15 +1,25 @@
-export default function Header() {
+import { NavLink, useNavigate } from "react-router-dom";
+
+export default function Header(props) {
+  const navigate = useNavigate()
+  
+  function handleClick(event){
+    props.onLogout()
+    navigate("/Login")
+
+  }
     return (
         <header>
-            <h1>Meu Site React</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Meus Pedidos</a></li>
-                    <li><a href="#">Novo Pedido</a></li>
-                    <li><a href="#">Sobre</a></li>
-                </ul>
-            </nav>
-        </header>
+        <h1>Meu site React</h1>
+        <nav>
+          <ul>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/Pedidos">Meus Pedidos</NavLink></li>
+            <li><NavLink to="/novo">Novo Pedido</NavLink></li>
+            <li><NavLink to="/sobre">Sobre</NavLink></li>
+            <li><button onClick={handleClick}>Sair</button></li>
+          </ul>
+        </nav>
+      </header>
     )
 }
