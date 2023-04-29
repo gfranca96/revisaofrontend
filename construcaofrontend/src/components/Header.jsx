@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import './Header.css';
 
 export default function Header(props) {
   const navigate = useNavigate()
@@ -16,7 +17,7 @@ export default function Header(props) {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/Pedidos">Meus Pedidos</NavLink></li>
             <li><NavLink to="/novo">Novo Pedido</NavLink></li>
-            <li><NavLink to="/sobre">Sobre</NavLink></li>
+            <li><NavLink to={`/sobre/${props.usuarioID}`}>Sobre</NavLink></li>
             <li><button onClick={handleClick}>Sair</button></li>
           </ul>
         </nav>
