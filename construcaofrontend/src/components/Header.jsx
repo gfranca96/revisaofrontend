@@ -11,13 +11,13 @@ export default function Header(props) {
   }
     return (
         <header>
-        <h1>Meu site React</h1>
+        <h1>Controle Social</h1>
         <nav>
           <ul>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/Pedidos">Meus Pedidos</NavLink></li>
-            <li><NavLink to="/novo">Novo Pedido</NavLink></li>
-            <li><NavLink to={`/sobre/${props.usuarioID}`}>Sobre</NavLink></li>
+            <li><NavLink to="/">Inicio</NavLink></li>
+            <li><NavLink to="/representante">Representante</NavLink></li>
+            <li><NavLink to="/parceiro">Parceiro</NavLink></li>
+            <li><NavLink to={`/acaosocial/${props.usuarioID}`}>Ações</NavLink></li>
             <li><button onClick={handleClick}>Sair</button></li>
           </ul>
         </nav>

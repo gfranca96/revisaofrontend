@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Pedidos from './pages/Pedidos'
-import Sobre from './pages/Sobre'
-import Novo from './pages/Novo'
+import Representante from './pages/Representante'
+import AcaoSocial from './pages/AcaoSocial'
+import Parceiro from './pages/Parceiro'
 import Erro404 from './pages/Erro404'
 import Login from './pages/Login'
 import Principal from './components/Principal'
 import './App.css'
+
 
 
 export default function App() {
@@ -33,9 +34,9 @@ export default function App() {
           <>
           <Route path="/" element={<Principal usuarioID={usuarioID}onLogout={handleLogout} />}>
             <Route index element={<Home />} />
-            <Route path="pedidos" element={<Pedidos />}/>
-            <Route path="novo" element={<Novo />}/> 
-            <Route path="sobre/:id" element={<Sobre />}/>
+            <Route path="representante" element={<Representante />}/>
+            <Route path="parceiro" element={<Parceiro />}/> 
+            <Route path="acaosocial/:id" element={<AcaoSocial />}/>
           </Route>
           </>
           :
