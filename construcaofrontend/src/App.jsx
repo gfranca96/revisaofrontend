@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Representante from './pages/Representante'
@@ -8,23 +8,13 @@ import Erro404 from './pages/Erro404'
 import Login from './pages/Login'
 import Principal from './components/Principal'
 import './App.css'
+import UserContext from './contexts/UserContext'
+import Perfil from './pages/Perfil'
 
 
 
 export default function App() {
-  const [logado, setLogado] = useState(false);
-  const [usuarioID, setusuarioID] = useState();
-
-  function handleLogin() {
-    setLogado(true);
-    setusuarioID(100);
-  }
-
-  function handleLogout() {
-    setLogado(false);
-    setusuarioID(null);
-  }
-
+  const { logado } = useContext(UserContext)
 
   return (
     <>
@@ -32,15 +22,16 @@ export default function App() {
         <Routes>
           {logado ?
           <>
-          <Route path="/" element={<Principal usuarioID={usuarioID}onLogout={handleLogout} />}>
+          <Route path="/" element={<Principal />}>
             <Route index element={<Home />} />
+            <Route path='perfil/:id' element={<Perfil />} />
             <Route path="representante" element={<Representante />}/>
             <Route path="parceiro" element={<Parceiro />}/> 
             <Route path="acaosocial/:id" element={<AcaoSocial />}/>
           </Route>
           </>
           :
-        <Route path="/Login" element={<Login onLogin={handleLogin} />}/>
+        <Route path="/Login" element={<Login />}/>
         }
         <Route path="*" element={<Erro404 />}/>
 

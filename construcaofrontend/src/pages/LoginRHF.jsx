@@ -1,9 +1,14 @@
 import { ErrorResponse } from "@remix-run/router";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function LoginRHF(props) {
     const form = useForm();
     const { register, handleSubmit, formState: { errors } } = form
+    const { handleLogin } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const validaEmail = {
         required: {
@@ -23,7 +28,8 @@ export default function LoginRHF(props) {
         }
     }
     function onSubmit(data) {
-        props.onSubmit()
+        handleLogin()
+        navigate("/")
     }
 
     return(
