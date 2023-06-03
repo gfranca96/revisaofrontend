@@ -18,15 +18,25 @@ const auth = getAuth(app)
 const UserContext = createContext({
     userID: null,
     logado: false,
-    login: () => { },
-    logout: () => { },
+    handleLogin: () => { },
+    handleLogout: () => { },
 })
 
 export function UserContextProvider(props) {
     const [currentUser, setCurrentUser] = useState({ userID: null, logado: false })
 
-    function login() {
-        setCurrentUser({ userID: 100, logado: true })
+    async function login(email, senha) {
+        let response = false;
+        return await signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                setCurrentUser({ userID: userCredential.user.id, logado: true })
+                response = true;
+            })
+            .catch((error) => {
+                console.log(error.message)
+                response = false;
+            })
+        return response;
     }
 
     function logout() {

@@ -27,12 +27,14 @@ export default function LoginRHF(props) {
             message: "Senha deve ter no minimo 8 caracteres"
         }
     }
-    function onSubmit(data) {
-        handleLogin()
-        navigate("/")
+    async function onSubmit(data) {
+        const { email, senha } = data
+        const ok = await handleLogin(email, senha);
+        console.log(ok)
+        if (ok) navigate("/")
     }
 
-    return(
+    return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label htmlFor="email">Email</label>
