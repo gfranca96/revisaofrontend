@@ -1,6 +1,6 @@
 import { ErrorResponse } from "@remix-run/router";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../contexts/UserContext";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -9,6 +9,7 @@ export default function LoginRHF(props) {
     const { register, handleSubmit, formState: { errors } } = form
     const { handleLogin } = useContext(UserContext)
     const navigate = useNavigate()
+    const [errorLogin, setErrorLogin] = useState()
 
     const validaEmail = {
         required: {
@@ -28,14 +29,19 @@ export default function LoginRHF(props) {
         }
     }
     async function onSubmit(data) {
-        const { email, senha } = data
-        const ok = await handleLogin(email, senha);
-        console.log(ok)
-        if (ok) navigate("/")
+        const { email, senha } = data;
+        setErrorLogin("")
+        try {
+            await handleLogin(email, senha)
+            navigate("/")
+        } catch (error) {
+            setErrorLogin(error.message)
+        }
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
+            {errorLogin && <p className="erro">{errorLogin}</p>}
             <div>
                 <label htmlFor="email">Email</label>
                 <input type="email" id="email" {...register("email", validaEmail)} />

@@ -1,19 +1,6 @@
+import { async } from "@firebase/util";
 import { createContext, useState } from "react";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBVcdAD4breJr2SC2CfyJ3WTlJfKhKE_ts",
-    authDomain: "back-react-a6c06.firebaseapp.com",
-    projectId: "back-react-a6c06",
-    storageBucket: "back-react-a6c06.appspot.com",
-    messagingSenderId: "77655602484",
-    appId: "1:77655602484:web:ef3dbfbb79b4de6a6aa161"
-};
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app)
+import { Login, Logout } from '../services/AuthService';
 
 const UserContext = createContext({
     userID: null,
@@ -25,29 +12,25 @@ const UserContext = createContext({
 export function UserContextProvider(props) {
     const [currentUser, setCurrentUser] = useState({ userID: null, logado: false })
 
-    async function login(email, senha) {
-        let response = false;
-        return await signInWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                setCurrentUser({ userID: userCredential.user.id, logado: true })
-                response = true;
-            })
-            .catch((error) => {
-                console.log(error.message)
-                response = false;
-            })
-        return response;
+    async function handleLogin(email, senha) {
+        try {
+            const id = await Login(email, senha)
+            setCurrentUser({ userID: id, logado: true })
+        } catch (error) {
+            throw Error(error.message)
+        }
     }
 
-    function logout() {
+    async function handleLogout() {
+        await Logout()
         setCurrentUser({ userID: null, logado: false })
     }
 
     const contexto = {
         userID: currentUser.userID,
         logado: currentUser.logado,
-        handleLogin: login,
-        handleLogout: logout,
+        handleLogin,
+        handleLogout,
     }
 
     return (

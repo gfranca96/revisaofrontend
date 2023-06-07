@@ -5,12 +5,12 @@ export default function LoginForm(props) {
     const refSenha = useRef()
     const [erroEmail, setErroEmail] = useState()
     const [erroSenha, setErroSenha] = useState()
-    
+
     function handleSubmit(event) {
         event.preventDefault()
         let valido = true;
 
-        if (!refEmail.current.value){
+        if (!refEmail.current.value) {
             setErroEmail("Email obrigatório")
             refEmail.current.focus()
             valido = valido && false;
@@ -18,7 +18,7 @@ export default function LoginForm(props) {
             setErroEmail("")
         }
 
-        if(!refSenha.current.value) {
+        if (!refSenha.current.value) {
             setErroSenha("Senha obrigatória")
             valido = valido && false;
         } else if (refSenha.current.value.lenght < 3) {
@@ -28,13 +28,13 @@ export default function LoginForm(props) {
             setErroSenha("")
         }
 
-        if(!valido) {
+        if (!valido) {
             return
         }
 
         props.onSubmit(event)
     }
-    return(
+    return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="email">Email</label>
