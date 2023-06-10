@@ -11,4 +11,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export { app }
+const urlApi = "https://back-react-a6c06-default-rtdb.firebaseio.com/tarefas.json";
+
+export { app, urlApi }

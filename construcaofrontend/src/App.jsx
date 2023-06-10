@@ -10,6 +10,7 @@ import Principal from './components/Principal'
 import './App.css'
 import UserContext from './contexts/UserContext'
 import Perfil from './pages/Perfil'
+import NovoForm from './pages/NovoForm'
 
 
 
@@ -25,13 +26,14 @@ export default function App() {
           <Route path="/" element={<Principal />}>
             <Route index element={<Home />} />
             <Route path='perfil/:id' element={<Perfil />} />
+            <Route path="tarefas" element={<NovoForm />} />
             <Route path="representante" element={<Representante />}/>
             <Route path="parceiro" element={<Parceiro />}/> 
             <Route path="acaosocial/:id" element={<AcaoSocial />}/>
           </Route>
           </>
           :
-        <Route path="/Login" element={<Login />}/>
+        <Route index element={<Login />}/>
         }
         <Route path="*" element={<Erro404 />}/>
 

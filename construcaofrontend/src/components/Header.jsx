@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import './Header.css';
 import UserContext from "../contexts/UserContext";
+import Login from "../pages/Login";
 
 export default function Header(props) {
   const { userID, handleLogout } = useContext(UserContext)
@@ -10,7 +11,7 @@ export default function Header(props) {
   
   function handleClick(event){
     handleLogout()
-    navigate("/Login")
+    navigate(<Login />)
 
   }
     return (
@@ -20,6 +21,7 @@ export default function Header(props) {
           <ul>
             <li><NavLink to="/">Inicio</NavLink></li>
             <li><NavLink to={perfil}>Perfil</NavLink></li>
+            <li><NavLink to="/tarefas">Tarefas</NavLink></li>
             <li><NavLink to="/representante">Representante</NavLink></li>
             <li><NavLink to="/parceiro">Parceiro</NavLink></li>
             <li><NavLink to={`/acaosocial/${props.usuarioID}`}>Ações</NavLink></li>

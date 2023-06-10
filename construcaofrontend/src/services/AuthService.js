@@ -1,5 +1,5 @@
 import { async } from "@firebase/util";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { app } from "./FirebaseConfig";
 
 const auth = getAuth(app)
