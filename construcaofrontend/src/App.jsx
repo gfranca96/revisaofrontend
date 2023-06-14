@@ -11,6 +11,8 @@ import './App.css'
 import UserContext from './contexts/UserContext'
 import Perfil from './pages/Perfil'
 import NovoForm from './pages/NovoForm'
+import HomeList from './pages/HomeList'
+import Editar from './pages/Editar'
 
 
 
@@ -25,9 +27,10 @@ export default function App() {
           <>
           <Route path="/" element={<Principal />}>
             <Route index element={<Home />} />
-            <Route path='perfil/:id' element={<Perfil />} />
+            <Route path="perfil/:id" element={<Perfil />} />
+            <Route path="editar/:key" element={<Editar />} />
             <Route path="tarefas" element={<NovoForm />} />
-            <Route path="representante" element={<Representante />}/>
+            <Route path="listatarefas" element={<HomeList />}/>
             <Route path="parceiro" element={<Parceiro />}/> 
             <Route path="acaosocial/:id" element={<AcaoSocial />}/>
           </Route>

@@ -1,15 +1,16 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import { insereTarefa } from '../services/TaskService'
+import { useNavigate, useParams } from 'react-router-dom'
+import { modificaTarefa } from '../services/TaskService'
 
-export default function NovoForm() {
+export default function EditarForm() {
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
+    const { key } = useParams()
 
     async function onSubmit(data) {
         try {
             // Chamar a TaskService
-            await insereTarefa(data)
+            await modificaTarefa(data)
             // Navegar para home
             navigate("/listatarefas")
         } catch (error) {
@@ -20,6 +21,7 @@ export default function NovoForm() {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <input type="hidden" {...register("key")} value={key} />
                 <div>
                     <label>Nome da tarefa</label>
                     <input type="text" {...register("nome")} />

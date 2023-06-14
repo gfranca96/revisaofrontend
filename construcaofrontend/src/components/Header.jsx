@@ -22,7 +22,7 @@ export default function Header(props) {
             <li><NavLink to="/">Inicio</NavLink></li>
             <li><NavLink to={perfil}>Perfil</NavLink></li>
             <li><NavLink to="/tarefas">Tarefas</NavLink></li>
-            <li><NavLink to="/representante">Representante</NavLink></li>
+            <li><NavLink to="/listatarefas">Lista de Tarefas</NavLink></li>
             <li><NavLink to="/parceiro">Parceiro</NavLink></li>
             <li><NavLink to={`/acaosocial/${props.usuarioID}`}>Ações</NavLink></li>
             <li><button onClick={handleClick}>Sair</button></li>
